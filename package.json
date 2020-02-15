@@ -4,7 +4,7 @@
   "description": "Closes the gaps between sentences in SRT files",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js examples/example.srt"
+    "test": "node index.js examples/Local_Example.srt"
   },
   "repository": {
     "type": "git",
