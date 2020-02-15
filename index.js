@@ -1,6 +1,5 @@
 const fs = require('fs');
-const parseSRT = require('parse-srt');
-const {toTimeCode} = require('./src/helpers/timecodeHelper');
+const parser = require('subtitles-parser');
 
 if(process.argv.length < 3) {
     console.error('Usage: node index.js <filename>');
@@ -10,18 +9,13 @@ if(process.argv.length < 3) {
 const fileName = process.argv[2];
 
 let srt = fs.readFileSync(fileName, 'utf-8');
-let subs = parseSRT(srt);
+let subs = parser.fromSrt(srt);
 
 let previousEnd = null;
 
-function serialiseSub(sub) {
-    return `${sub.id}\n${toTimeCode(sub.start)} --> ${toTimeCode(sub.end)}\n${sub.text}\n`;
-}
-
 subs.forEach(sub => {
-    if(previousEnd) sub.start = previousEnd;
-    previousEnd = sub.end;
-    console.log(serialiseSub(sub));
+    if(previousEnd) sub.startTime = previousEnd;
+    previousEnd = sub.endTime;
 });
 
-console.log('');
+process.stdout.write(parser.toSrt(subs));

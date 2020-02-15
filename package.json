@@ -22,6 +22,6 @@
   "homepage": "https://github.com/GeekFiftyFive/CloseSRTGaps#readme",
   "dependencies": {
     "moment": "^2.24.0",
-    "parse-srt": "^1.0.0-alpha"
+    "subtitles-parser": "0.0.2"
   }
 }
