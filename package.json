@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/GeekFiftyFive/CloseSRTGaps/issues"
   },
-  "homepage": "https://github.com/GeekFiftyFive/CloseSRTGaps#readme"
+  "homepage": "https://github.com/GeekFiftyFive/CloseSRTGaps#readme",
+  "dependencies": {
+    "parse-srt": "^1.0.0-alpha"
+  }
 }
