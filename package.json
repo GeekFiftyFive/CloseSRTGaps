@@ -4,7 +4,7 @@
   "description": "Closes the gaps between sentences in SRT files",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js examples/Local_Example.srt"
+    "test": "electron index.js examples/Local_Example.srt"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "dependencies": {
     "moment": "^2.24.0",
     "subtitles-parser": "0.0.2"
+  },
+  "devDependencies": {
+    "electron": "^8.0.1"
   }
 }
