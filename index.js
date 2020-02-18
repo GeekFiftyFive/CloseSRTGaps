@@ -1,14 +1,25 @@
 const fs = require('fs');
 const {closeGaps} = require('./src/closeGaps');
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, ipcMain} = require('electron');
 
-if(process.argv.length < 3) {
-    console.error('Usage: node index.js <filename>');
-    process.exit(1);
+// Electron
+function createWindow () {
+    // Create the browser window.
+    let win = new BrowserWindow({
+      width: 800,
+      height: 600,
+      webPreferences: {
+          nodeIntegration: true
+      }
+    })  
+    // and load the index.html of the app.
+    win.loadFile('./app/index.html')
 }
 
-const fileName = process.argv[2];
+ipcMain.on('ondragstart', (event, filePath, userChosenPath) => {
+    console.log(userChosenPath);
+    let srt = fs.readFileSync(filePath, 'utf-8');
+    fs.writeFileSync(userChosenPath, closeGaps(srt));
+})
 
-let srt = fs.readFileSync(fileName, 'utf-8');
-
-process.stdout.write(closeGaps(srt));
+app.whenReady().then(createWindow)
