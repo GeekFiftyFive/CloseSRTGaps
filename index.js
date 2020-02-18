@@ -6,12 +6,13 @@ const {app, BrowserWindow, ipcMain} = require('electron');
 function createWindow () {
     // Create the browser window.
     let win = new BrowserWindow({
-      width: 800,
-      height: 600,
+      width: 256,
+      height: 290,
       webPreferences: {
           nodeIntegration: true
       }
-    })  
+    })
+    win.setMenu(null);
     // and load the index.html of the app.
     win.loadFile('./app/index.html')
 }

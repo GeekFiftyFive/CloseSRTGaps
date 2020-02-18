@@ -9,7 +9,7 @@ dragFile.addEventListener('drop', function (e) {
     e.stopPropagation();
 
     let toLocalPath = path.resolve(app.getPath("desktop"));
-    let userChosenPath = dialog.showSaveDialogSync({ defaultPath: toLocalPath });
+    let userChosenPath = dialog.showSaveDialogSync({ defaultPath: toLocalPath + '/output.srt', filters: [{name: 'Subtitles (*.srt)', extensions: ['srt']}] });
   
     for (let f of e.dataTransfer.files) {
         console.log('The file(s) you dragged: ', f);
